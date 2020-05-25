@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+            box-sizing: border-box;
+        }
+        body{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(99, 181, 206);
+           margin:20px;
+            min-height: 100vh;
+
+        }
+        
+        .clock{
+            width:350px;
+            height:350px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff ;
+            background-image: url(clock.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            border:20px solid #fff;
+            box-shadow:inset 0 0 30px rgba(0,0,0.1),
+            0 20px 20px rgba(0,0,0,.2),
+            0 0 0 4px rgba(255,255,255,1) ;
+        }
+        .clock::before{
+            content:'';
+            position:absolute;
+            width:20px;
+            height:20px;
+            background:#848484;
+            border:2px solid #fff;
+            z-index: 100;
+            border-radius: 50%;
+        }
+
+        .hours,.minutes,.seconds{
+            position:absolute;
+        }
+        .hours,.hr{
+              width:160px;
+              height:160px;
+        }
+        .minutes,.mi{
+              width:190px;
+              height:190px;
+        }
+        .seconds,.sc{
+              width:230px;
+              height:230px;
+        }
+        .hr,.mi,.sc{
+              display:flex;
+              justify-content: center;
+              position:absolute;
+              border-radius: 50%;
+        }
+
+        .hr::before{
+            content:'';
+            position:absolute;
+            width:8px;
+            height:80px;
+            background-color: #848484;
+            z-index: 10;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .mi::before{
+            content:'';
+            position:absolute;
+            width:4px;
+            height:90px;
+            background-color: rgb(99, 181, 206);
+            z-index: 11;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .sc::before{
+            content:'';
+            position:absolute;
+            width:2px;
+            height:160px;
+            background-color: #ec0a0a;
+            z-index: 12;
+            border-radius: 6px 6px 0 0;
+        }
+
+h1{
+    font-family: 'Cedarville Cursive', cursive;
+    font-size: 3rem;
+    color:rgb(220, 243, 252);
+    justify-content: center;
+    position: relative;
+    bottom:30px;
+}
+h4{
+    font-family: 'Cedarville Cursive', cursive;
+    font-size:1.5rem;
+    color:rgb(220, 243, 252);
+    justify-content: center;
+    position:relative;
+    top:40px;
+    
+}
+h6{
+    text-align:right;
+    font-size: 1rem;
+    font-family: 'Philosopher', sans-serif;
+    color:rgb(220, 243, 252);
+    position: relative;
+    bottom:40px;
+}
+/* p{
+    z-index: 115;
+    font-family: 'Philosopher', sans-serif;
+    color: rgb(253, 18, 18);
+} */
+
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>"You may delay but time will not"</h1>
+        <h6>Benjamin Franklin</h6>
+    </div>
+    <div class="clock">
+        <!-- <p id="day"></p> -->
+<div class="hours">
+         <div class="hr" id="hr">
+            
+         </div>
+</div>
+<div class="minutes">
+             <div class="mi" id="mi"> 
+             </div>
+</div> 
+<div class="seconds"> 
+            <div class="sc" id="sc">
+            </div>
+</div>  
+       
+    </div>
+    <h4>Created By -Arun Rajput</h4>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript">
+       const deg=6;
+       const hr=document.querySelector("#hr");
+       const mi=document.querySelector("#mi");
+       const sc=document.querySelector("#sc");
+       setInterval(() => {
+           let day=new Date();
+           let hh=day.getHours()*30;
+           let mm=day.getMinutes()* deg;
+           let ss=day.getSeconds()*  deg;
+
+           hr.style.transform=`rotateZ(${hh+(mm/12)}deg)`;
+           mi.style.transform=`rotateZ(${mm}deg)`;
+           sc.style.transform=`rotateZ(${ss}deg)`;
+       })
+//        var day=new Date();
+//        var d = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+// document.getElementById("day").innerHTML = d[day.getDay()];
+   </script>
+        
+</body>
+</html>
